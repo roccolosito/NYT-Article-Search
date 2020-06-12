@@ -10,6 +10,7 @@ $.ajax({
     var articleHeading = response.docs[i].headline;
     var articleURL = response.docs[i].multimedia.web_url;
     
+    
     }
 
     // $("#top_articles").append();
