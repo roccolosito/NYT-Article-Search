@@ -1,3 +1,7 @@
+$("#search").on("click", function() {
+
+
+
 
 
 
@@ -10,7 +14,7 @@ $.ajax({
     var articleHeading = response.docs[i].headline;
     var articleURL = response.docs[i].multimedia.web_url;
     
-    
+    var results = response.data;
     }
 
     // $("#top_articles").append();
@@ -24,3 +28,5 @@ $.ajax({
 //     event.preventDefault();
 
 // })
+
+})
