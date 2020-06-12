@@ -20,9 +20,13 @@ $.ajax({
     // $("#top_articles").append();
 })
 
-// function clearResults(){
-//     $("#clear_results").empty();
-// }
+function clearResults(event){
+    event.preventDefault();
+
+    $("#top_articles").empty();
+
+}
+$("#clear_results").click(clearResults);
 
 // $("#search").click(function(event){
 //     event.preventDefault();
