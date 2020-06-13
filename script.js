@@ -27,15 +27,18 @@ $("#search").on("click", function() {
     // End date (e.g. 20121231)
     if(searchTermValue != undefined){
         var builtUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTermValue + "&api-key=FP3W4KxYuoxvDigP0qOepCo2SJKcuXTF";
-        if (articleYearStart != undefined){
+        if (articleYearStart != undefined && articleYearStart.length > 0){
             builtUrl+="&begin_date=" + articleYearStart;
+        }
+        if (articleYearEnd != undefined && articleYearEnd.length > 0){
+            builtUrl+="&end_date=" + articleYearEnd;
         }
         $.ajax({
             url: builtUrl,
             method: "GET"
         }).then(function(response){
             console.log(response);
-            if(articleLimit == undefined){
+            if(articleLimit == undefined || articleLimit.length == 0){
                 articleLimit = response.response.docs.length;
             }
             for(var i=0; i < articleLimit; i++){
