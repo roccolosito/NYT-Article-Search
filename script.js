@@ -1,6 +1,9 @@
 $("#search").on("click", function() {
     event.preventDefault();
     var searchTermValue = $("#searchTerm").val();
+    var articleLimit = $("#numOfRecs").val();
+    console.log("how many articles " + articleLimit);
+
     $("#top_articles").empty();
 
 
@@ -9,7 +12,7 @@ $("#search").on("click", function() {
         method: "GET"
     }).then(function(response){
         console.log(response);
-        for(var i=0; i < response.response.docs.length; i++){
+        for(var i=0; i < articleLimit; i++){
             var articleHeading = response.response.docs[i].headline.main;
             var articleAbstract = response.response.docs[i].abstract;
             var articleURL = response.response.docs[i].multimedia.web_url;
