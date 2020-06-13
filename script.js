@@ -38,9 +38,8 @@ $("#search").on("click", function() {
             var articleURL = response.response.docs[i].multimedia.web_url;
             
             //var results = response.data;
-            var article = $("<div>");
-            article.addClass('card')
-            article.append($("<div>").addClass('card-header').text(articleHeading));
+            var article = $("<div>").addClass('card').css('margin-bottom', '20px');
+            article.append($("<h5>").addClass('card-header').text(articleHeading));
             article.append($("<div>").addClass('card-body').text(articleAbstract));
             $("#top_articles").append(article);
             
