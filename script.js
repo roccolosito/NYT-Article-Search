@@ -39,8 +39,9 @@ $("#search").on("click", function() {
             
             //var results = response.data;
             var article = $("<div>");
-            article.append($("<p>").text(articleHeading));
-            article.append($("<p>").text(articleAbstract));
+            article.addClass('card')
+            article.append($("<div>").addClass('card-header').text(articleHeading));
+            article.append($("<div>").addClass('card-body').text(articleAbstract));
             $("#top_articles").append(article);
             
 
