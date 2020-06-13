@@ -2,9 +2,29 @@ $("#search").on("click", function() {
     event.preventDefault();
     var searchTermValue = $("#searchTerm").val();
     var articleLimit = $("#numOfRecs").val();
+    var articleYearStart = $("#startYear").val();
+    var articleYearEnd = $("#endYear").val();
+
+
     console.log("how many articles " + articleLimit);
 
     $("#top_articles").empty();
+
+
+    // Query Parameters
+    // begin_date	
+    // string
+    // matches ^\d{8}$
+    
+    // matches ^\d{8}$
+    // Begin date (e.g. 20120101)
+    
+    // end_date	
+    // string
+    // matches ^\d{8}$
+    
+    // matches ^\d{8}$
+    // End date (e.g. 20121231)
 
 
     $.ajax({
