@@ -28,7 +28,7 @@ $("#search").on("click", function() {
 
 
     $.ajax({
-        url:"http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTermValue + "&api-key=FP3W4KxYuoxvDigP0qOepCo2SJKcuXTF",
+        url:"https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTermValue + "&api-key=FP3W4KxYuoxvDigP0qOepCo2SJKcuXTF",
         method: "GET"
     }).then(function(response){
         console.log(response);
