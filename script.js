@@ -25,29 +25,36 @@ $("#search").on("click", function() {
     
     // matches ^\d{8}$
     // End date (e.g. 20121231)
-
-
-    $.ajax({
-        url:"https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTermValue + "&api-key=FP3W4KxYuoxvDigP0qOepCo2SJKcuXTF" + "&begin_date=" + articleYearStart,
-        method: "GET"
-    }).then(function(response){
-        console.log(response);
-        for(var i=0; i < articleLimit; i++){
-            var articleHeading = response.response.docs[i].headline.main;
-            var articleAbstract = response.response.docs[i].abstract;
-            var articleURL = response.response.docs[i].multimedia.web_url;
-            
-            //var results = response.data;
-            var article = $("<div>").addClass('card').css('margin-bottom', '20px');
-            article.append($("<h5>").addClass('card-header').text(articleHeading));
-            article.append($("<div>").addClass('card-body').text(articleAbstract));
-            $("#top_articles").append(article);
-            
-
+    if(searchTermValue != undefined){
+        var builtUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTermValue + "&api-key=FP3W4KxYuoxvDigP0qOepCo2SJKcuXTF";
+        if (articleYearStart != undefined){
+            builtUrl+="&begin_date=" + articleYearStart;
         }
-
-        // $("#top_articles").append();
-    })
+        $.ajax({
+            url: builtUrl,
+            method: "GET"
+        }).then(function(response){
+            console.log(response);
+            if(articleLimit == undefined){
+                articleLimit = response.response.docs.length;
+            }
+            for(var i=0; i < articleLimit; i++){
+                var articleHeading = response.response.docs[i].headline.main;
+                var articleAbstract = response.response.docs[i].abstract;
+                var articleURL = response.response.docs[i].multimedia.web_url;
+                
+                //var results = response.data;
+                var article = $("<div>").addClass('card').css('margin-bottom', '20px');
+                article.append($("<h5>").addClass('card-header').text(articleHeading));
+                article.append($("<div>").addClass('card-body').text(articleAbstract));
+                $("#top_articles").append(article);
+                
+    
+            }
+    
+            // $("#top_articles").append();
+        })    
+    }
 });
 
 function clearResults(event){
